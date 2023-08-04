@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as o}from"./index-10a53310.js";const c={},n={class:"text-h5 font-weight-bold mb-4"};function r(s,a){return e(),o("div",n,"Shopping Cart")}const i=t(c,[["render",r]]);export{i as default};

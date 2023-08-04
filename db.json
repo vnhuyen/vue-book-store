@@ -1,0 +1,124 @@
+{
+  "book_list": [
+    {
+      "id": 1,
+      "title": "Silver in the Bone",
+      "author": "Alexandra Bracken",
+      "coverUrl": "https://m.media-amazon.com/images/I/51-MpCrsi8L._SY346_.jpg",
+      "price": 11.54,
+      "link": "https://www.amazon.com/Silver-Wood-Emily-Tesh-ebook/dp/B07MF3JJGK/ref=sr_1_1?crid=KXALP0C48R9F&keywords=silver+in+the+wood&qid=1690885475&sprefix=Silver+in+the+Bone%2Cspecialty-aps%2C309&sr=8-1",
+      "category": 1,
+      "description": "There is a Wild Man who lives in the deep quiet of Greenhollow, and he listens to the wood. Tobias, tethered to the forest, does not dwell on his past life, but he lives a perfectly unremarkable existence with his cottage, his cat, and his dryads.\nWhen Greenhollow Hall acquires a handsome, intensely curious new owner in Henry Silver, everything changes. Old secrets better left buried are dug up, and Tobias is forced to reckon with his troubled past—both the green magic of the woods, and the dark things that rest in its heart."
+    },
+    {
+      "id": 2,
+      "title": "A Guest in the House",
+      "author": "Emily Carroll",
+      "coverUrl": "https://m.media-amazon.com/images/I/51Ta6M2xIWL._SX357_BO1,204,203,200_.jpg",
+      "price": 25.19,
+      "link": "https://www.amazon.com/dp/125025552X/ref=s9_acsd_al_bw_c2_x_1_t?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-2&pf_rd_r=MFMZGPDHT889D4N5YSKF&pf_rd_t=101&pf_rd_p=332b5722-9db0-4190-a2f2-f911bc122217&pf_rd_i=17276801011",
+      "category": 0,
+      "description": "After many lonely years, Abby’s just gotten married. She met her new husband―a recently widowed dentist―when he arrived in town with his young daughter, seeking a new start. Although it’s strange living in the shadow of her predecessor, Abby does her best to be a good wife and mother. But the more she learns about her new husband’s first wife, the more things don’t add up. And Abby starts to wonder . . . was Sheila’s death really by natural causes? As Abby sinks deeper into confusion, Sheila’s memory seems to become a force all its own, ensnaring Abby in a mystery that leaves her obsessed, fascinated, and desperately in love for the first time in her life."
+    },
+    {
+      "id": 3,
+      "title": "Thornhedge",
+      "author": "T Kingfisher",
+      "coverUrl": "https://m.media-amazon.com/images/I/41EG7jc-EeL.jpg",
+      "price": 11.19,
+      "link": "https://www.amazon.com/dp/B0B9KV1NR8/ref=s9_acsd_al_bw_c2_x_2_t?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-2&pf_rd_r=02FAPARMMMSWG3RC4EW7&pf_rd_t=101&pf_rd_p=332b5722-9db0-4190-a2f2-f911bc122217&pf_rd_i=17276801011",
+      "category": 0,
+      "description": "From USA Today bestselling author T. Kingfisher, Thornhedge is the tale of a kind-hearted, toad-shaped heroine, a gentle knight, and a mission gone completely sideways."
+    },
+    {
+      "id": 4,
+      "title": "The Psychology of Money: Timeless lessons on wealth, greed, and happiness",
+      "author": "Morgan Housel",
+      "coverUrl": "https://m.media-amazon.com/images/I/515ICk7NVYL._SX321_BO1,204,203,200_.jpg",
+      "price": 12.74,
+      "link": "https://www.amazon.com/Psychology-Money-Timeless-lessons-happiness/dp/0857197681?ref_=Oct_d_otopr_d_2581_0&pd_rd_w=bEZiv&content-id=amzn1.sym.16e37646-73e5-411d-be1c-663080c0b9df&pf_rd_p=16e37646-73e5-411d-be1c-663080c0b9df&pf_rd_r=8P90Q9X470H8C6W8842T&pd_rd_wg=ChG19&pd_rd_r=d077e532-e3d2-4c0f-8196-7e1b1b887cf1&pd_rd_i=0857197681",
+      "category": 2,
+      "description": "Money―investing, personal finance, and business decisions―is typically taught as a math-based field, where data and formulas tell us exactly what to do. But in the real world people don’t make financial decisions on a spreadsheet. They make them at the dinner table, or in a meeting room, where personal history, your own unique view of the world, ego, pride, marketing, and odd incentives are scrambled together."
+    },
+    {
+      "id": 5,
+      "title": "The Water Outlaws",
+      "author": "S. L. Huang",
+      "coverUrl": "https://m.media-amazon.com/images/I/51zNnIv131L.jpg",
+      "price": 14.99,
+      "link": "https://www.amazon.com/dp/B0B9KWC5C8/ref=s9_acsd_al_bw_c2_x_4_t?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-2&pf_rd_r=02FAPARMMMSWG3RC4EW7&pf_rd_t=101&pf_rd_p=332b5722-9db0-4190-a2f2-f911bc122217&pf_rd_i=17276801011",
+      "category": 0,
+      "description": "Inspired by a classic of martial arts literature, S. L. Huang's The Water Outlaws are bandits of devastating ruthlessness, unseemly femininity, dangerous philosophies, and ungovernable gender who are ready to make history—or tear it apart."
+    },
+    {
+      "id": 6,
+      "title": "I Will Teach You to Be Rich",
+      "author": "Ramit Sethi",
+      "coverUrl": "https://m.media-amazon.com/images/I/515ICk7NVYL._SX321_BO1,204,203,200_.jpg",
+      "price": 9.69,
+      "link": "https://www.amazon.com/I-Will-Teach-You-to-Be-Rich-audiobook/dp/B07QR7GYF7?ref_=Oct_d_obs_d_2581_0&pd_rd_w=spTfd&content-id=amzn1.sym.68cf20ef-f2f0-42ca-8c87-ad9617594532&pf_rd_p=68cf20ef-f2f0-42ca-8c87-ad9617594532&pf_rd_r=8P90Q9X470H8C6W8842T&pd_rd_wg=ChG19&pd_rd_r=d077e532-e3d2-4c0f-8196-7e1b1b887cf1&pd_rd_i=B07QR7GYF7",
+      "category": 2,
+      "description": "Money―investing, personal finance, and business decisions―is typically taught as a math-based field, where data and formulas tell us exactly what to do. But in the real world people don’t make financial decisions on a spreadsheet. They make them at the dinner table, or in a meeting room, where personal history, your own unique view of the world, ego, pride, marketing, and odd incentives are scrambled together."
+    },
+    {
+      "id": 7,
+      "title": "Heart-Healthy Vegetarian Cookbook",
+      "author": "James E King",
+      "coverUrl": "https://m.media-amazon.com/images/I/41SuhNnl80L._SX331_BO1,204,203,200_.jpg",
+      "price": 11.99,
+      "link": "https://www.amazon.com/Heart-Healthy-Vegetarian-Cookbook-Delicious-Nutritious/dp/B0C6BX58J7/ref=sr_1_3?keywords=cookbook&qid=1690886142&s=books&sr=1-3",
+      "category": 3,
+      "description": "Ready to nourish your heart and embrace a healthy lifestyle with mouthwatering vegetarian meals? Look no further than the 'Heart-Healthy Vegetarian Cookbook'! With this essential guide, you'll discover a world of delicious and nutritious recipes designed to support your heart health and promote overall well-being."
+    },
+    {
+      "id": 8,
+      "title": "Recipes from My Home Kitchen",
+      "author": " Christine Ha & Gordon Ramsay",
+      "coverUrl": "https://m.media-amazon.com/images/I/51T3l0oSBRL._SX409_BO1,204,203,200_.jpg",
+      "price": 17.99,
+      "link": "https://www.amazon.com/Recipes-My-Home-Kitchen-MasterChef/dp/1623360943/ref=sr_1_1?crid=196B24KQJ3MAH&keywords=christine+ha+cookbook&qid=1690886259&sprefix=cookbook+christine%2Caps%2C358&sr=8-1",
+      "category": 3,
+      "description": "In her kitchen, Christine Ha possesses a rare ingredient that most professionally-trained chefs never learn to use: the ability to cook by sense. After tragically losing her sight in her twenties, this remarkable home cook, who specializes in the mouthwatering, wildly popular Vietnamese comfort foods of her childhood, as well as beloved American standards that she came to love growing up in Texas, re-learned how to cook. Using her heightened senses, she turns out dishes that are remarkably delicious, accessible, luscious, and crave-worthy."
+    },
+    {
+      "id": 9,
+      "title": "The Science of Mindfulness: A Research-Based Path to Well-Being",
+      "author": "Ronald Siegel",
+      "coverUrl": "https://m.media-amazon.com/images/I/512cG--zJ1L.jpg",
+      "price": 4.25,
+      "link": "https://www.amazon.com/The-Science-of-Mindfulness-audiobook/dp/B00MFW8USU/ref=sr_1_4?crid=CLBMGS0N2JQF&keywords=science&qid=1690886372&s=audible&sprefix=scien%2Caudible%2C303&sr=1-4",
+      "category": 0,
+      "description": "Ever noticed that trying to calm down often produces more agitation? That trying to change bad habits can seem impossible? Or that real fulfillment can be elusive, despite living a successful life?"
+    },
+    {
+      "id": 10,
+      "title": "Fantastic Beasts and Where to Find Them",
+      "author": "J.K. Rowling",
+      "coverUrl": "https://m.media-amazon.com/images/I/51WZWQA42-L.jpg",
+      "price": 8.98,
+      "link": "https://www.amazon.com/dp/B01MRA8TIE?plink=W6QZWkzXXoF6DgvQ&ref_=adblp13nvvxx_0_3_ti",
+      "category": 1,
+      "description": "Ever noticed that trying to calm down often produces more agitation? That trying to change bad habits can seem impossible? Or that real fulfillment can be elusive, despite living a successful life? "
+    },
+    {
+      "id": 11,
+      "title": "The Last Wish",
+      "author": "Andrzej Sapkowski",
+      "coverUrl": "https://m.media-amazon.com/images/I/51z6w4XmEoL.jpg",
+      "price": 30.78,
+      "link": "https://www.amazon.com/dp/B00WZKNDJS?plink=I0yXzAIw1KlPgBQA&ref_=adblp13npsbx_1_3_ti",
+      "category": 1,
+      "description": "Geralt of Rivia is a witcher. A cunning sorcerer. A merciless assassin. And a cold-blooded killer. His sole purpose: to destroy the monsters that plague the world. But not everything monstrous-looking is evil, and not everything fair is good...and in every fairy tale there is a grain of truth.The international hit that inspired the video game The Witcher."
+    },
+    {
+      "id": 12,
+      "title": "A Flicker in the Dark",
+      "author": "Stacy Willingham",
+      "coverUrl": "https://m.media-amazon.com/images/I/51Pfj0VRR8L.jpg",
+      "price": 15.39,
+      "link": "https://www.amazon.com/Flicker-Dark-Novel-Stacy-Willingham-ebook/dp/B092T9G4Y5/ref=sr_1_1?crid=1ICPDEVECR817&keywords=novel&qid=1690886791&s=digital-text&sprefix=no%2Cdigital-text%2C325&sr=1-1",
+      "category": 1,
+      "description": "When Chloe Davis was twelve, six teenage girls went missing in her small Louisiana town. By the end of the summer, her own father had confessed to the crimes and was put away for life, leaving Chloe and the rest of her family to grapple with the truth and try to move forward while dealing with the aftermath."
+    }
+  ]
+}
