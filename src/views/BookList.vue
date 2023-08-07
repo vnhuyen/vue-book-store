@@ -18,7 +18,12 @@ const props = defineProps<{
     </template>
     <template v-else>
       <v-row>
-        <BookItemView v-for="book in props.books" :key="book.id" :book="book" />
+        <template v-if="props.books && props.books?.length > 0">
+          <BookItemView v-for="book in props.books" :key="book.id" :book="book" />
+        </template>
+        <template v-else>
+          <v-col cols="12">No Book Found.</v-col>
+        </template>
       </v-row>
     </template>
     <div class="text-center">

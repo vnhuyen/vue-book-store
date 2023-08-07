@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
 import BookList from './BookList.vue'
 import FilterBox from './FilterBox.vue'
 import type { FilterOptions } from '@/constants/types'
 import bookService from '@/services/BookService'
 import type { BookItem } from '@/constants/types'
 import { BookCategory } from '@/constants/data'
-const bookCategoriesSelected = ref()
-
+const filterOptions = reactive<FilterOptions>({
+  searchString: '',
+  categoryCheckedList: []
+})
 const books = ref<BookItem[]>([])
 const page = ref<number>(0)
+
 const isLoading = ref(false)
 onMounted(async () => {
   isLoading.value = true
@@ -30,28 +33,38 @@ const getBooks = () => {
 }
 
 const onFilterBook = (options: FilterOptions) => {
-  console.log('called', options?.categoryCheckedList)
-  let allfilteredBooks = books.value.filter(
-    (book) => options.categoryCheckedList?.includes(Object.values(BookCategory)[book.category])
-  )
+  const { categoryCheckedList, searchString } = options;
+  let filteredBooks = [...books.value];
+  if (searchString) {
+    filteredBooks = filteredBooks.filter((book) =>
+      book.title.toLowerCase().includes(searchString.toLowerCase())
+    );
+  }
 
-  options?.categoryCheckedList?.length > 0 ? (books.value = allfilteredBooks) : books.value
+  if (categoryCheckedList && categoryCheckedList.length > 0) {
+    filteredBooks = filteredBooks.filter((book) =>
+    categoryCheckedList.includes(Object.values(BookCategory)[book.category])
+    );
+  }
+
+  books.value = filteredBooks;
 }
+
 const onResetFilterBook = () => {
   getBooks()
-  bookCategoriesSelected.value = []
+  filterOptions.categoryCheckedList = []
+  filterOptions.searchString = ""
 }
 </script>
 
 <template>
   <main>
-    {{ console.log('dsd', books) }}
     <v-row>
       <v-col cols="12" md="3"
         ><FilterBox
-          v-on:onFilterBook="onFilterBook"
+          v-on:onFilterBook="onFilterBook(filterOptions)"
           v-on:onResetFilterBook="onResetFilterBook"
-          :bookCategoriesSelected="bookCategoriesSelected"
+          :filterOptions="filterOptions"
       /></v-col>
       <v-col cols="12" md="9"><BookList :books="books" :isLoading="isLoading" /></v-col>
     </v-row>

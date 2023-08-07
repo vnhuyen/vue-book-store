@@ -14,14 +14,6 @@ const router = useRouter()
             <v-icon icon="$vuetify"></v-icon>
             <div class="text-h5 mr-5">Vue Book Store</div>
           </RouterLink>
-          <nav>
-            <RouterLink to="/home" class="text-indigo-300 hover:text-white text-xl mr-3"
-              >Home</RouterLink
-            >
-            <RouterLink to="/about" class="text-indigo-300 hover:text-white text-xl"
-              >About</RouterLink
-            >
-          </nav>
         </div>
         <div>
           <v-btn variant="text" icon="mdi-cart" to="/cart" />

@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-import { passwordValidation } from '@/constants/regex'
+import { emailValidation, passwordValidation } from '@/constants/regex'
 import { reactive, ref } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
-import { email, required, minLength } from '@vuelidate/validators'
-const formRef = ref(null)
+import { email, required, minLength, helpers } from '@vuelidate/validators'
 const visible = ref(false)
 const initialState = {
-  name: '',
   email: '',
   password: ''
 }
@@ -36,22 +34,32 @@ const state = reactive({
   ...initialState
 })
 const rules = {
-  name: { required },
   email: { required, email },
-  password: { required }
+  password: {
+    required,
+    minLength: minLength(6),
+    containsPasswordRequirement: helpers.withMessage(
+      () => `Password requires an uppercase, lowercase, number and special character`,
+      (value: string) => passwordValidation.test(value)
+    )
+  }
 }
 
 const v$ = useVuelidate(rules, state)
 const onSubmit = () => {
-  console.log('sfsdf')
-  v$.value.$validate
+  if (!v$.value.$invalid) {
+    console.log('sfsdf', state)
+    const { email, password } = state
+    if (email === import.meta.env.VITE_APP_EMAIL && password === import.meta.env.VITE_APP_PASSWORD) {
+    }
+  }
 }
 </script>
 
 <template>
   <v-sheet width="500" class="mx-auto">
     <v-card>
-      <v-form @submit.prevent fast-fail class="px-10 py-8">
+      <v-form @submit.prevent="onSubmit" fast-fail class="px-10 py-8">
         <h2 class="font-weight-bold text-center mb-3">Login</h2>
         <v-text-field
           v-model="state.email"
@@ -62,7 +70,6 @@ const onSubmit = () => {
           :error-messages="v$.email.$errors.map((e) => e.$message) as string[]"
           @input="v$.email.$touch"
           @blur="v$.email.$touch"
-          required
         ></v-text-field>
 
         <v-text-field
@@ -73,19 +80,12 @@ const onSubmit = () => {
           :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
           @click:append-inner="visible = !visible"
           :error-messages="v$.password.$errors.map((e) => e.$message) as string[]"
-          required
           class="mb-3"
           @input="v$.password.$touch"
           @blur="v$.password.$touch"
         ></v-text-field>
 
-        <v-btn
-          type="submit"
-          block
-          variant="flat"
-          class="text-none mb-4"
-          color="primary"
-          @click="v$.$validate"
+        <v-btn type="submit" block variant="flat" class="text-none mb-4" color="primary" @click="v$.$validate"
           >Submit</v-btn
         >
       </v-form>

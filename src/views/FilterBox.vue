@@ -1,18 +1,13 @@
 <script lang="ts" setup>
 import { BookCategory } from '@/constants/data'
-import { reactive, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import type { FilterOptions } from '@/constants/types'
-const filterOptions = reactive<FilterOptions>({
-  searchString: '',
-  categoryCheckedList: []
-})
+
 const props = defineProps<{
-  bookCategoriesSelected: string[]
+  filterOptions: FilterOptions
 }>()
-const bookCategories =
-  props.bookCategoriesSelected?.length > 0
-    ? props.bookCategoriesSelected
-    : ref(Object.values(BookCategory))
+
+const filterOptions = ref(props.filterOptions)
 
 const emit = defineEmits(['onFilterBook', 'onResetFilterBook'])
 const handleFilterSubmmit = () => {
@@ -21,7 +16,7 @@ const handleFilterSubmmit = () => {
 const handleResetFilter = () => {
   emit('onResetFilterBook')
 }
-watch(props.bookCategoriesSelected, () => {})
+
 </script>
 
 <template>
@@ -35,9 +30,10 @@ watch(props.bookCategoriesSelected, () => {})
         class="mt-2"
         placeholder="Enter search string"
         density="compact"
+        clearable
       ></v-text-field>
       <div class="text-subtitle-2">Categories</div>
-      <template v-for="category in bookCategories" :key="category">
+      <template v-for="category in Object.values(BookCategory)" :key="category">
         <v-checkbox
           v-model="filterOptions.categoryCheckedList"
           :label="category"

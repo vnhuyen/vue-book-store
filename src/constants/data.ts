@@ -4,3 +4,10 @@ export enum BookCategory {
   Business = 'Business',
   CookBook = 'CookBook'
 }
+
+export enum ToastType {
+  Success = 'success',
+  Info = 'info',
+  Warning = 'warning',
+  Error = 'error',
+}
