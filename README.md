@@ -16,8 +16,13 @@
 npm install
 ```
 
-### Start app
+### Start Fake REST API Server
 
+```sh
+json-server --watch db.json
+```
+
+### Start App
 ```sh
 npm run dev
 ```
