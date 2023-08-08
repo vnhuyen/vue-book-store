@@ -1,3 +1,4 @@
+import { vuexStore } from './stores/vuexStore';
 import './assets/main.css'
 import '@mdi/font/css/materialdesignicons.css'
 import { createApp } from 'vue'
@@ -20,6 +21,7 @@ const vuetify = createVuetify({
 
 const app = createApp(App)
 app.use(vuetify)
+app.use(vuexStore)
 app.use(createPinia())
 app.use(router)
 

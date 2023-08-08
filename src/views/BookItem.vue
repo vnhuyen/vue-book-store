@@ -1,14 +1,21 @@
 <script setup lang="ts">
 import { BookCategory } from '@/constants/data'
-import type { CardProps } from '@/constants/types'
+import type { BookItem, CardProps, CartItem } from '@/constants/types'
+import { useCartStore } from '@/stores/cart'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const props = defineProps<CardProps>()
 const router = useRouter()
 const bookCategories = ref(Object.values(BookCategory))
 const isHovering = ref(false)
-const onAddToCart = () => {
-  console.log('onAddToCart')
+const cartStore = useCartStore()
+const onAddToCart = (bookItem: BookItem) => {
+  const currentSelectedCartItem: CartItem | undefined = cartStore.items.find((item) => item.book.id === bookItem.id)
+  const cartItem = {
+    book: bookItem,
+    quantity: currentSelectedCartItem ? currentSelectedCartItem.quantity++ : 0
+  }
+  cartStore.addItem(cartItem)
 }
 </script>
 <template>
@@ -22,9 +29,7 @@ const onAddToCart = () => {
     >
       <v-img :src="props.book.coverUrl" height="275" cover></v-img>
 
-      <v-card-title class="text-subtitle-1 font-weight-bold mb-0">{{
-        props.book.title
-      }}</v-card-title>
+      <v-card-title class="text-subtitle-1 font-weight-bold mb-0">{{ props.book.title }}</v-card-title>
       <v-card-text class="text-center"
         ><v-chip color="primary" text-color="white" size="small">
           {{ bookCategories[props.book.category] }}
@@ -42,7 +47,7 @@ const onAddToCart = () => {
           :variant="isHovering ? 'flat' : 'text'"
           @mouseover="isHovering = true"
           @mouseleave="isHovering = false"
-          @click.stop="onAddToCart"
+          @click.stop="onAddToCart(props.book)"
           >Add to Cart</v-btn
         >
       </template>

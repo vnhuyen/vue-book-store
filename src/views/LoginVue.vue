@@ -1,14 +1,21 @@
 <script lang="ts" setup>
 import { emailValidation, passwordValidation } from '@/constants/regex'
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { email, required, minLength, helpers } from '@vuelidate/validators'
+import { ToastType, USER_AUTH } from '@/constants/data'
+import { useRouter } from 'vue-router'
+import { showToast } from '@/helpers/getToast'
+import { useStore } from 'vuex'
+
+const router = useRouter()
+const vuexStore = useStore()
+
 const visible = ref(false)
 const initialState = {
   email: '',
   password: ''
 }
-
 const formData = reactive({
   email: '',
   emailRules: {
@@ -44,16 +51,28 @@ const rules = {
     )
   }
 }
-
 const v$ = useVuelidate(rules, state)
 const onSubmit = () => {
   if (!v$.value.$invalid) {
-    console.log('sfsdf', state)
-    const { email, password } = state
-    if (email === import.meta.env.VITE_APP_EMAIL && password === import.meta.env.VITE_APP_PASSWORD) {
-    }
+    // let user = {
+    //   email: state.email as string,
+    //   name: 'Demo'
+    // }
+    // if (email === import.meta.env.VITE_APP_EMAIL && password === import.meta.env.VITE_APP_PASSWORD) {
+    //   localStorage.setItem(USER_AUTH, JSON.stringify(user))
+    //   router.replace('/')
+    // } else {
+    //   showToast({ message: 'Invalid email or password', type: ToastType.Error })
+    // }
+    vuexStore.dispatch('handleLogin', state)
   }
 }
+onMounted(() => {
+  const userState = JSON.parse(vuexStore.state.userStore.user)
+  if (userState) {
+    router.replace('/')
+  }
+})
 </script>
 
 <template>

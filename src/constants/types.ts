@@ -17,3 +17,18 @@ export type FilterOptions = {
   searchString: string
   categoryCheckedList: string[]
 }
+
+export type UserAuth = {
+  email: string
+  password: string
+}
+
+export type UserInfo = {
+  email:string
+  name:string
+}
+
+export type CartItem = {
+  book: BookItem
+  quantity: number
+}

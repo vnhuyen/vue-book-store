@@ -1,6 +1,15 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { onMounted } from 'vue'
+import { RouterView, useRouter } from 'vue-router'
 import NavBar from '@/components/NavBar.vue'
+import { USER_AUTH } from './constants/data'
+const router = useRouter()
+onMounted(() => {
+  const user = localStorage.getItem(USER_AUTH)
+  if (!user) {
+    router.push('/login')
+  }
+})
 </script>
 
 <template>

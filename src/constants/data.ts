@@ -11,3 +11,5 @@ export enum ToastType {
   Warning = 'warning',
   Error = 'error',
 }
+
+export const USER_AUTH = 'USER_AUTH'
