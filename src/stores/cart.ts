@@ -6,11 +6,17 @@ export const useCartStore  = defineStore('cart', {
         items: [] as CartItem[]
     }),
     actions: {
-        addItem(cartItem: CartItem) {
-            this.items.push(cartItem)
+        addItem(bookItem: BookItem) {
+            let addItem = {book: bookItem, quantity: 1}
+            const existingItemIndex = this.items.findIndex(item => item.book.id === addItem.book.id)
+            if(existingItemIndex !== -1) {
+                this.items[existingItemIndex].quantity++
+            } else{
+                this.items.push(addItem)
+            }
         },
-        removeItem(id: number){
-            this.items.filter(item => item.book.id === id)
+        removeItem(id: number) {
+            this.items = this.items.filter(item => item.book.id !== id)
         },
         removeAllItems(){
             this.items = []

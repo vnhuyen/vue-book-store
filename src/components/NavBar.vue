@@ -1,34 +1,18 @@
 <script setup lang="ts">
-import { onMounted, ref, watchEffect, onUpdated, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import type { UserInfo } from '@/constants/types'
 import { useCartStore } from '@/stores/cart'
-const router = useRouter()
 const vuexStore = useStore()
-const userInfo = ref<{ user: UserInfo }>()
-const ripple = ref(false)
-const userItem = computed(() => {
-  const userState = JSON.parse(vuexStore.state.userStore.user)
-  userState ? (userInfo.value = userState) : null
-  if (!userInfo.value?.user) {
-    router.replace('/login')
-  }
-})
-onMounted(() => {
-  const userState = JSON.parse(vuexStore.state.userStore.user)
-  userState ? (userInfo.value = userState) : null
-  if (!userInfo.value?.user) {
-    router.replace('/login')
-  }
+
+const userInfo = computed<UserInfo>(() => {
+  return JSON.parse(vuexStore.state.userStore.user)
 })
 
 const handleLogout = () => {
   vuexStore.dispatch('handleLogout')
 }
-
 const cartStore = useCartStore()
-console.log(cartStore.items.length)
 </script>
 
 <template>
@@ -42,7 +26,10 @@ console.log(cartStore.items.length)
           </RouterLink>
         </div>
         <template v-if="userInfo">
-          <div>
+          <div class="d-flex align-center">
+            <v-card-title
+              >Hello <span class="font-weight-bold">{{ userInfo?.name }}</span></v-card-title
+            >
             <v-btn to="/cart" class="buttonCart">
               <v-badge :content="cartStore.items.length" color="error">
                 <v-icon icon="mdi-cart" size="x-large"></v-icon>

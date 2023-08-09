@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { emailValidation, passwordValidation } from '@/constants/regex'
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, ref, onMounted, onUpdated } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { email, required, minLength, helpers } from '@vuelidate/validators'
 import { ToastType, USER_AUTH } from '@/constants/data'
@@ -73,6 +73,8 @@ onMounted(() => {
     router.replace('/')
   }
 })
+
+const userState = JSON.parse(vuexStore.state.userStore.user)
 </script>
 
 <template>

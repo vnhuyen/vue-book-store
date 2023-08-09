@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { BookCategory } from '@/constants/data'
-import type { BookItem, CardProps, CartItem } from '@/constants/types'
+import type { BookItem, CardProps } from '@/constants/types'
 import { useCartStore } from '@/stores/cart'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -10,16 +10,11 @@ const bookCategories = ref(Object.values(BookCategory))
 const isHovering = ref(false)
 const cartStore = useCartStore()
 const onAddToCart = (bookItem: BookItem) => {
-  const currentSelectedCartItem: CartItem | undefined = cartStore.items.find((item) => item.book.id === bookItem.id)
-  const cartItem = {
-    book: bookItem,
-    quantity: currentSelectedCartItem ? currentSelectedCartItem.quantity++ : 0
-  }
-  cartStore.addItem(cartItem)
+  cartStore.addItem(bookItem)
 }
 </script>
 <template>
-  <v-col cols="12" sm="5" md="4" lg="3" xl="2" :key="props.book.id">
+  <v-col cols="12" sm="5" md="4" lg="3" :key="props.book.id">
     <v-card
       border
       class="mb-2 rounded-lg"
@@ -27,9 +22,9 @@ const onAddToCart = (bookItem: BookItem) => {
       variant="text"
       @click="router.push(`/book/${props.book.id}`)"
     >
-      <v-img :src="props.book.coverUrl" height="275" cover></v-img>
+      <v-img :src="props.book.coverUrl" height="275" contain></v-img>
 
-      <v-card-title class="text-subtitle-1 font-weight-bold mb-0">{{ props.book.title }}</v-card-title>
+      <v-card-title class="text-subtitle-1 font-weight-bold mb-0 text-center">{{ props.book.title }}</v-card-title>
       <v-card-text class="text-center"
         ><v-chip color="primary" text-color="white" size="small">
           {{ bookCategories[props.book.category] }}

@@ -6,7 +6,8 @@ import bookService from '@/services/BookService'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { showToast } from '@/helpers/getToast'
-
+import { useCartStore } from '@/stores/cart'
+const cartStore = useCartStore()
 const route = useRoute()
 const bookItemId = parseInt(route.params.id as string)
 const bookDetail = ref<BookItem>()
@@ -18,10 +19,12 @@ onMounted(async () => {
   })
 })
 
-
 const handleAddToCart = () => {
-  if(quantity.value <= 0){
-    showToast({message: "Please enter quantity", type: ToastType.Error})
+  if (quantity.value <= 0) {
+    showToast({ message: 'Please enter quantity', type: ToastType.Error })
+  }
+  if (bookDetail.value) {
+    cartStore.addItem(bookDetail.value)
   }
 }
 </script>
@@ -29,9 +32,7 @@ const handleAddToCart = () => {
 <template>
   <v-container class="w-50">
     <v-row>
-      <v-col cols="12" xs="12" md="4" xl="4"
-        ><v-img :src="bookDetail?.coverUrl" height="auto" contain
-      /></v-col>
+      <v-col cols="12" xs="12" md="4" xl="4"><v-img :src="bookDetail?.coverUrl" height="auto" contain /></v-col>
       <v-col cols="12" xs="12" md="8" xl="8">
         <v-card-title>{{ bookDetail?.title }}</v-card-title>
         <v-card-text class="text-subtitle-1">{{ bookDetail?.author }}</v-card-text>
@@ -46,11 +47,11 @@ const handleAddToCart = () => {
             {{ bookCategories[bookDetail?.category || 0] }}
           </v-chip>
         </v-card-text>
-       
+
         <div class="d-inline pl-4">
           <v-btn-group color="default" density="compact">
             <v-btn icon="mdi-minus" @click="quantity <= 0 ? quantity === 0 : quantity--" color="#e1e1e1"></v-btn>
-            <input type="number" v-model="quantity" class="quantity-input">
+            <input type="number" v-model="quantity" class="quantity-input" />
             <v-btn icon="mdi-plus" @click="quantity++" color="#e1e1e1"></v-btn>
           </v-btn-group>
           <v-btn color="primary" prepend-icon="mdi-cart" variant="flat" class="ml-5" @click="handleAddToCart"
@@ -77,5 +78,4 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 </style>

@@ -8,12 +8,11 @@ export const userStore = {
     }),
     mutations: {
         saveUserInfo(state: {user: UserInfo}, userInfo: UserInfo) {
-            localStorage.setItem(USER_AUTH, JSON.stringify(state))
+            console.log("saveUserInfo", state, userInfo)
             state.user = userInfo
             location.reload()
         },
         clearUserInfo(state: {user?: UserInfo}) {
-            localStorage.removeItem(USER_AUTH)
             state.user = undefined
             location.reload()
         }
@@ -25,12 +24,14 @@ export const userStore = {
                 name: 'Demo'
             }
             if (userAuth.email === import.meta.env.VITE_APP_EMAIL && userAuth.password === import.meta.env.VITE_APP_PASSWORD) {
-              commit('saveUserInfo', user)
+                localStorage.setItem(USER_AUTH, JSON.stringify(user))
+                commit('saveUserInfo', user)
             } else {
-              showToast({ message: 'Invalid email or password', type: ToastType.Error })
+                showToast({ message: 'Invalid email or password', type: ToastType.Error })
             }
         },
         handleLogout({commit}: any) {
+            localStorage.removeItem(USER_AUTH)
             commit('clearUserInfo')
         }
     }

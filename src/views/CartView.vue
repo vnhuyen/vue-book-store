@@ -7,9 +7,17 @@ const cartStore = useCartStore()
 const handleClearCart = () => {
   cartStore.removeAllItems()
 }
+const handleRemoveItem = (id: number) => {
+  cartStore.removeItem(id)
+}
 
-const shoppingCart = computed(() => {
-  return cartStore
+const cartTotalPrice = computed(() => {
+  let total = 0
+  cartStore.items.forEach((item) => {
+    const itemTotalPrice = item.book.price * item.quantity
+    total += itemTotalPrice
+  })
+  return Number(total).toFixed(2)
 })
 </script>
 
@@ -20,14 +28,14 @@ const shoppingCart = computed(() => {
   </div>
   <v-table>
     <tbody>
-      <template v-if="shoppingCart.items.length === 0">
+      <template v-if="cartStore.items.length === 0">
         <tr>
           Shopping cart is empty
         </tr>
       </template>
       <template v-else>
-        <tr v-for="item in shoppingCart.items" :key="item.book.id">
-          <td><v-img :src="item.book.coverUrl" height="250" contain /></td>
+        <tr v-for="item in cartStore.items" :key="item.book.id">
+          <td><v-img :src="item.book.coverUrl" height="150" width="100" contain /></td>
           <td>{{ item.book.title }}</td>
           <td>
             <v-btn-group color="default" density="compact">
@@ -40,7 +48,18 @@ const shoppingCart = computed(() => {
               <v-btn icon="mdi-plus" @click="item.quantity++" color="#e1e1e1"></v-btn>
             </v-btn-group>
           </td>
-          <td><v-btn icon="mdi-close" flat> </v-btn></td>
+          <td class="font-weight-bold">${{ Number(item.quantity * item.book.price).toFixed(2) }}</td>
+          <td class="text-right"><v-btn icon="mdi-close" flat @click="handleRemoveItem(item.book.id)" /></td>
+        </tr>
+        <tr class="pt-3">
+          <td></td>
+          <td></td>
+          <td class="text-right text-h6 font-weight-bold">Total</td>
+          <td class="text-h6 font-weight-bold">
+            $
+            {{ cartTotalPrice }}
+          </td>
+          <td class="text-right"><v-btn flat color="primary">Checkout</v-btn></td>
         </tr>
       </template>
     </tbody>
@@ -51,5 +70,8 @@ const shoppingCart = computed(() => {
 .quantity-input {
   width: 50px;
   text-align: center;
+}
+.v-img__img {
+  padding: 10px 0;
 }
 </style>
