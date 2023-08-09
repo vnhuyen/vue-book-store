@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 import type { UserInfo } from '@/constants/types'
 import { useCartStore } from '@/stores/cart'
 const vuexStore = useStore()
-
+const cartStore = useCartStore()
 const userInfo = computed<UserInfo>(() => {
   return JSON.parse(vuexStore.state.userStore.user)
 })
-
 const handleLogout = () => {
   vuexStore.dispatch('handleLogout')
 }
-const cartStore = useCartStore()
 </script>
 
 <template>

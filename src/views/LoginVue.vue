@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-import { emailValidation, passwordValidation } from '@/constants/regex'
-import { reactive, ref, onMounted, onUpdated } from 'vue'
+import { passwordValidation } from '@/constants/regex'
+import { reactive, ref, onMounted } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { email, required, minLength, helpers } from '@vuelidate/validators'
-import { ToastType, USER_AUTH } from '@/constants/data'
 import { useRouter } from 'vue-router'
-import { showToast } from '@/helpers/getToast'
 import { useStore } from 'vuex'
 
 const router = useRouter()
@@ -16,27 +14,6 @@ const initialState = {
   email: '',
   password: ''
 }
-const formData = reactive({
-  email: '',
-  emailRules: {
-    required: (value: string) => !!value || 'Field is required',
-    emailValidator: (value: string) => {
-      if (value?.length > 0 && emailValidation.test(value)) return true
-
-      return 'Invalid e-mail'
-    }
-  },
-  password: '',
-  passwordRules: {
-    required: (value: string) => !!value || 'Field is required',
-    passwordValidator: (value: string) => {
-      if (value?.length > 0 && passwordValidation.test(value)) return true
-
-      return 'Password must contain minimum 6 characters, at least one letter, one number and one special character'
-    }
-  },
-  visible: false
-})
 const state = reactive({
   ...initialState
 })
@@ -73,8 +50,6 @@ onMounted(() => {
     router.replace('/')
   }
 })
-
-const userState = JSON.parse(vuexStore.state.userStore.user)
 </script>
 
 <template>
