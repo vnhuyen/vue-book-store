@@ -33,27 +33,25 @@ const getBooks = () => {
 }
 
 const onFilterBook = (options: FilterOptions) => {
-  const { categoryCheckedList, searchString } = options;
-  let filteredBooks = [...books.value];
+  const { categoryCheckedList, searchString } = options
+  let filteredBooks = [...books.value]
   if (searchString) {
-    filteredBooks = filteredBooks.filter((book) =>
-      book.title.toLowerCase().includes(searchString.toLowerCase())
-    );
+    filteredBooks = filteredBooks.filter((book) => book.title.toLowerCase().includes(searchString.toLowerCase()))
   }
 
   if (categoryCheckedList && categoryCheckedList.length > 0) {
     filteredBooks = filteredBooks.filter((book) =>
-    categoryCheckedList.includes(Object.values(BookCategory)[book.category])
-    );
+      categoryCheckedList.includes(Object.values(BookCategory)[book.category])
+    )
   }
 
-  books.value = filteredBooks;
+  books.value = filteredBooks
 }
 
 const onResetFilterBook = () => {
   getBooks()
   filterOptions.categoryCheckedList = []
-  filterOptions.searchString = ""
+  filterOptions.searchString = ''
 }
 </script>
 

@@ -22,9 +22,10 @@ onMounted(async () => {
 const handleAddToCart = () => {
   if (quantity.value <= 0) {
     showToast({ message: 'Please enter quantity', type: ToastType.Error })
-  }
-  if (bookDetail.value) {
-    cartStore.addItem(bookDetail.value)
+  } else {
+    if (bookDetail.value) {
+      cartStore.addItem(bookDetail.value)
+    }
   }
 }
 </script>
@@ -54,9 +55,9 @@ const handleAddToCart = () => {
             <input type="number" v-model="quantity" class="quantity-input" />
             <v-btn icon="mdi-plus" @click="quantity++" color="#e1e1e1"></v-btn>
           </v-btn-group>
-          <v-btn color="primary" prepend-icon="mdi-cart" variant="flat" class="ml-5" @click="handleAddToCart"
-            >Add to Cart</v-btn
-          >
+          <v-btn color="primary" prepend-icon="mdi-cart" variant="flat" class="ml-5" @click="handleAddToCart">
+            Add to Cart
+          </v-btn>
         </div>
       </v-col>
     </v-row>
